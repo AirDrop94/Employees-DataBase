@@ -12,13 +12,13 @@ class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      data: [{name: 'John', lastName: 'Deer', salary: 2500, increase: false, rise: true, id: 1},
-        {name: 'Juan', lastName: 'Carlos', salary: 1500, increase: false, rise: false, id: 2},
-        {name: 'Markus', lastName: 'Bennet', salary: 1500, increase: true, rise: false, id: 3},
-        {name: 'Beata', lastName: 'Dudko', salary: 2200, increase: false, rise: false, id: 4},
-        {name: 'Karina', lastName: 'Lipninska', salary: 700, increase: false, rise: false, id: 5},
-        {name: 'Bartek', lastName: 'Urban', salary: 2500, increase: true, rise: false, id: 6},
-        {name: 'Artsiom', lastName: 'Luskha', salary: 1200, increase: false, rise: false, id: 7}
+      data: [{name: 'John', lastName: 'Deer', department:'MANAGER', salary: 2500, increase: false, rise: true, id: 1},
+        {name: 'Juan', lastName: 'Carlos', department:'QA', salary: 800, increase: false, rise: false, id: 2},
+        {name: 'Markus', lastName: 'Bennet', department:'QA', salary: 500, increase: true, rise: false, id: 3},
+        {name: 'Beata', lastName: 'Dudko', department:'DEV', salary: 2200, increase: false, rise: false, id: 4},
+        {name: 'Karina', lastName: 'Lipninska', department:'QA', salary: 700, increase: false, rise: false, id: 5},
+        {name: 'Bartek', lastName: 'Urban', department:'MANAGER', salary: 2500, increase: false, rise: false, id: 6},
+        {name: 'Artsiom', lastName: 'Luskha', department:'DEV', salary: 1200, increase: false, rise: false, id: 7}
       ],
       term: '',
       filter: 'all'
@@ -36,10 +36,11 @@ class App extends Component{
     })
   }
 
-  addItem = (name, lastName, salary) => {
+  addItem = (name, lastName, department, salary) => {
     const newItem = {
       name,
       lastName,
+      department,
       salary,
       increase: false,
       rise: false,
@@ -70,7 +71,7 @@ class App extends Component{
     }
 
     return items.filter(item => {
-      return item.name.indexOf(term) > -1;
+      return item.lastName.indexOf(term) > -1;
     })
   }
 

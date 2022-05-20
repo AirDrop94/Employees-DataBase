@@ -1,5 +1,6 @@
 import {Component} from 'react';
 
+
 import './employees-add-form.css';
 
 class EmployeesAddForm extends Component{
@@ -8,6 +9,7 @@ class EmployeesAddForm extends Component{
         this.state = {
             name: '',
             lastName:'',
+            department:'',
             salary: ''
         }
     }
@@ -15,7 +17,9 @@ class EmployeesAddForm extends Component{
     onValueChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
-            [e.target.lastName]: e.target.value
+            [e.target.lastName]: e.target.value,
+            [e.target.department]: e.target.value
+
         })
     }
 
@@ -24,24 +28,30 @@ class EmployeesAddForm extends Component{
         if (this.state.name.length < 3 
             || this.state.name.length >= 14 
             || this.state.lastName.length < 3
-            || this.state.lastName.length >=14
+            || this.state.lastName.length >= 14
+            || this.state.department.length < 2
+            || this.state.department.length >= 8
             || this.state.salary < 500 || this.state.salary > 50000) return;
-        this.props.onAdd(this.state.name, this.state.lastName, this.state.salary);
+        this.props.onAdd(
+            this.state.name, 
+            this.state.lastName, 
+            this.state.department, 
+            this.state.salary);
         this.setState({
             name:'',
             lastName:'',
+            department:'',
             salary:''
         })
     }
 
     render() {
-        const {name, lastName, salary} = this.state;
+        const {name, lastName, department, salary} = this.state;
 
         return (
             <div className='app-add-form'>
                 <h3>Add new employee</h3>
-                <form
-                    className='add-form d-flex'
+                <form className='add-form d-flex'
                     onSubmit = {this.onSubmit}>
                     <input type='text'
                         className='form-control new-post-label'
@@ -55,13 +65,18 @@ class EmployeesAddForm extends Component{
                         name='lastName'
                         value={lastName} 
                         onChange={this.onValueChange}/>
-                    <input type='number'
+                        <input type='text'
+                        className='form-control new-post-label'
+                        placeholder='QA/DEV/MANAGER'
+                        name='department'
+                        value={department} 
+                        onChange={this.onValueChange}/>
+                        <input type='number'
                         className='form-control new-post-label'
                         placeholder='Salary in USD?'
                         name='salary'
                         value={salary} 
                         onChange={this.onValueChange}/>
-
                     <button type='submit'
                             className='btn btn-outline-light'>Add</button>
                 </form>
