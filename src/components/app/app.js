@@ -12,16 +12,19 @@ class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      data: [{name: 'John C.', salary: 1000, increase: false, rise: true, id: 1},
-        {name: 'Juan G.', salary: 900, increase: false, rise: false, id: 2},
-        {name: 'Ury L.', salary: 1500, increase: true, rise: false, id: 3},
-        {name: 'Max F.', salary: 2200, increase: false, rise: false, id: 4}
+      data: [{name: 'John', lastName: 'Deer', salary: 2500, increase: false, rise: true, id: 1},
+        {name: 'Juan', lastName: 'Carlos', salary: 1500, increase: false, rise: false, id: 2},
+        {name: 'Markus', lastName: 'Bennet', salary: 1500, increase: true, rise: false, id: 3},
+        {name: 'Beata', lastName: 'Dudko', salary: 2200, increase: false, rise: false, id: 4},
+        {name: 'Karina', lastName: 'Lipninska', salary: 700, increase: false, rise: false, id: 5},
+        {name: 'Bartek', lastName: 'Urban', salary: 2500, increase: true, rise: false, id: 6},
+        {name: 'Artsiom', lastName: 'Luskha', salary: 1200, increase: false, rise: false, id: 7}
       ],
       term: '',
       filter: 'all'
     }
 
-    this.maxId = 5;
+    this.maxId = 10;
 
   }
 
@@ -33,9 +36,10 @@ class App extends Component{
     })
   }
 
-  addItem = (name, salary) => {
+  addItem = (name, lastName, salary) => {
     const newItem = {
       name,
+      lastName,
       salary,
       increase: false,
       rise: false,
@@ -101,7 +105,8 @@ class App extends Component{
       <AppInfo 
         employees={employees} 
         increased={increased}
-        rised={rised}/>
+        rised={rised}
+        />
 
       <div className='search-panel'>
           <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
