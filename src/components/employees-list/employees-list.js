@@ -19,6 +19,7 @@ const EmployeesList = ({data, onDelete, onToggleProp}) => {
         <ul className='app-list list-group'>
             {elements}
         </ul>
+        
     )
 }
 

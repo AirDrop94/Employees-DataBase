@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import {Component} from 'react';
 import './search-panel.css';
 
 class SearchPanel extends Component {
@@ -19,9 +19,9 @@ class SearchPanel extends Component {
         return ( 
         <input type='text'
                 className='form-control search-input'
-                placeholder='Find an employee (add his last name)'
+                placeholder='Find an employee (add his/her last name)'
                 value={this.state.term}
-                onChange={this.onUpdateSearch}/>
+                onChange={this.onUpdateSearch}/>       
         )
     }
 }

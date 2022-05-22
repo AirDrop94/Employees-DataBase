@@ -15,7 +15,7 @@ class App extends Component{
       data: [{name: 'John', lastName: 'Deer', department:'MANAGER', salary: 2500, increase: false, rise: true, id: 1},
         {name: 'Juan', lastName: 'Carlos', department:'QA', salary: 800, increase: false, rise: false, id: 2},
         {name: 'Markus', lastName: 'Bennet', department:'QA', salary: 500, increase: true, rise: false, id: 3},
-        {name: 'Beata', lastName: 'Dudko', department:'DEV', salary: 2200, increase: false, rise: false, id: 4},
+        {name: 'Beata', lastName: 'Kowalska', department:'DEV', salary: 2200, increase: false, rise: false, id: 4},
         {name: 'Karina', lastName: 'Lipninska', department:'QA', salary: 700, increase: false, rise: false, id: 5},
         {name: 'Bartek', lastName: 'Urban', department:'MANAGER', salary: 2500, increase: false, rise: false, id: 6},
         {name: 'Artsiom', lastName: 'Luskha', department:'DEV', salary: 1200, increase: false, rise: false, id: 7}
@@ -85,6 +85,8 @@ class App extends Component{
         return items.filter(item => item.rise);
       case 'moreThen1000':
         return items.filter(item => item.salary > 1000);
+      case 'lessThan1000':
+        return items.filter(item => item.salary < 1000);
       default:
         return items
     }
@@ -93,12 +95,13 @@ class App extends Component{
   onFilterSelect = (filter) => {
     this.setState({filter});
   }
-
+    
   render() {
     const {data, term, filter} = this.state;
     const employees = this.state.data.length;
     const increased = this.state.data.filter(item => item.increase).length;
     const rised = this.state.data.filter(item => item.rise).length;
+    const totalSalary = this.state.data.map(item => item.salary);
     const visibleData = this.filterPost(this.searchEmp(data, term), filter);
 
     return (
@@ -107,6 +110,7 @@ class App extends Component{
         employees={employees} 
         increased={increased}
         rised={rised}
+        totalSalary={totalSalary}
         />
 
       <div className='search-panel'>
@@ -115,7 +119,7 @@ class App extends Component{
         </div>
         
       <EmployeesList 
-        data = {visibleData}
+        data={visibleData}
         onDelete={this.deleteItem}
         onToggleProp={this.onToggleProp}/>
       <EmployeesAddForm onAdd={this.addItem}/>    

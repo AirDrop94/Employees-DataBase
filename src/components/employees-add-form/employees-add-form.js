@@ -31,7 +31,7 @@ class EmployeesAddForm extends Component{
             || this.state.lastName.length >= 14
             || this.state.department.length < 2
             || this.state.department.length >= 8
-            || this.state.salary < 500 || this.state.salary > 50000) return;
+            || this.state.salary < 500 || this.state.salary > 20000) return;
         this.props.onAdd(
             this.state.name, 
             this.state.lastName, 

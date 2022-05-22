@@ -5,7 +5,8 @@ const AppFilter = (props) => {
     const buttonsData = [
         {name: 'all', label: 'All employees'}, 
         {name: 'rise', label: 'Employee for promotion'}, 
-        {name: 'moreThen1000', label: 'Salary more than 1000$'}
+        {name: 'moreThen1000', label: 'More 1000 USD'},
+        {name: 'lessThan1000', label: 'Less 1000 USD'}
     ];
 
     const buttons = buttonsData.map(({name, label}) => {
