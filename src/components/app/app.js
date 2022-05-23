@@ -101,7 +101,7 @@ class App extends Component{
     const employees = this.state.data.length;
     const increased = this.state.data.filter(item => item.increase).length;
     const rised = this.state.data.filter(item => item.rise).length;
-    const totalSalary = this.state.data.map(item => item.salary);
+    const totalSalary = this.state.data.reduce((acc, curr) => {return acc + curr.salary}, 0);
     const visibleData = this.filterPost(this.searchEmp(data, term), filter);
 
     return (
